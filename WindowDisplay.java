@@ -33,4 +33,7 @@ public class WindowDisplay {
     public void displayBatteryLife(Thermometer thermometer){
         System.out.println(thermometer.getBatteryLevel());
     }
+
+    public void displayTemperature(WindowDisplay temperature){System.out.println("Thermometer is displaying" +
+            " temperature of: " + temperature.getTemperatureDisplay());}
 }

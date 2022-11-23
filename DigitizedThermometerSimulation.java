@@ -3,27 +3,30 @@ import java.util.Scanner;
 
 public class DigitizedThermometerSimulation {
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws FileNotFoundException, InterruptedException {
         Thermometer thermometer = new Thermometer();
         WindowDisplay display = new WindowDisplay();
         TemperatureReader temp = new TemperatureReader();
         SelfTest selftest = new SelfTest();
+        File inputFile = new File("simulatedTemps.txt");
 
-        //Turn thermometer on
+
+                //Turn thermometer on
         thermometer.pressPowerButton(true);
 
         //Run self test
         selftest.runSelfTest();
 
         if(thermometer.isPowerOn() && selftest.isTestPassed()){
-            Scanner sc = new Scanner(new File("SimulatedTemperatures.csv")); //TODO: Idk why this isn't working
+            Scanner sc = new Scanner(inputFile); //TODO: Idk why this isn't working
             while (sc.hasNext()){
                 double nextTemp = sc.nextDouble();
                 if(temp.isInRange(nextTemp)){
                     temp.setRecordedTemp(sc.nextDouble());
                 }
                 display.setTemperatureDisplay(temp.getRecordedTemp());
-
+                display.displayTemperature(display);
+                Thread.sleep(10000);
             }
 
         }
