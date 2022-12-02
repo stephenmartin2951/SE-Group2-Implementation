@@ -18,7 +18,7 @@ public class DigitizedThermometerSimulation {
         selftest.runSelfTest();
 
         if(thermometer.isPowerOn() && selftest.isTestPassed()){
-            Scanner sc = new Scanner(inputFile); //TODO: Idk why this isn't working
+            Scanner sc = new Scanner(inputFile);
             while (sc.hasNext()){
                 double nextTemp = sc.nextDouble();
                 if(temp.isInRange(nextTemp)){
