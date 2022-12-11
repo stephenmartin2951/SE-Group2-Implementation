@@ -11,11 +11,11 @@ public class DigitizedThermometerSimulation {
         File inputFile = new File("simulatedTemps.txt");
 
 
-                //Turn thermometer on
+        //Turn thermometer on
         thermometer.pressPowerButton(true);
 
         //Run self test
-        selftest.runSelfTest();
+        selftest.runSelfTest(thermometer);
 
         if(thermometer.isPowerOn() && selftest.isTestPassed()){
             Scanner sc = new Scanner(inputFile);
@@ -23,10 +23,15 @@ public class DigitizedThermometerSimulation {
                 double nextTemp = sc.nextDouble();
                 if(temp.isInRange(nextTemp)){
                     temp.setRecordedTemp(sc.nextDouble());
-                }
                 display.setTemperatureDisplay(temp.getRecordedTemp());
                 display.displayTemperature(display);
-                Thread.sleep(10000);
+                    if(temp.hasFever(temp.getRecordedTemp())) {
+                        System.out.println("You have a fever!");
+                    }
+                Thread.sleep(1000);
+                } else {
+                    System.out.println(temp.outOfRange);
+                }
             }
 
         }

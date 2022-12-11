@@ -1,11 +1,13 @@
+import java.awt.Toolkit;
+
 public class Thermometer {
 
-    private boolean powerOn = false;
-    private boolean inactivity = false;
-    private int batteryLevel = 100;
+    public boolean powerOn = false;
+    public boolean inactivity = false;
+    public int batteryLevel = 100;
 
-    private boolean powerButton = false;
-    private boolean batteryButton = false;
+    public boolean powerButton = false;
+    public boolean batteryButton = false;
 
     public void pressPowerButton(boolean powerButton){
         this.powerButton = powerButton;
@@ -49,8 +51,17 @@ public class Thermometer {
         this.batteryLevel = batteryLevel;
     }
 
-    public void beep(){
-        System.out.println("Beep!");
+    public Boolean produceBeepingSound(int times){
+        for(int i = 0; i < times; i++){
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            System.out.println("Beep!");
+            try{
+                Thread.sleep(350);
+            } catch (InterruptedException e){
+                return false;
+            }
+        }
+        return true;
     }
 
 

@@ -1,8 +1,11 @@
 public class TemperatureReader {
-    private double recordedTemp;
-    final private int minTemp = 0;
-    final private int maxTemp = 120;
-    private boolean inRange = false;
+    public double recordedTemp;
+    final public int minTemp = 96;
+    final public int maxTemp = 120;
+    final public double feverLimit = 98.6;
+    public boolean hasFever = false;
+    public boolean inRange = false;
+    public String outOfRange = "Error: Temperature out of range.";
 
     public double getRecordedTemp() {
         return recordedTemp;
@@ -12,13 +15,12 @@ public class TemperatureReader {
         this.recordedTemp = recordedTemp;
     }
 
+    public boolean hasFever(double recordedTemp) {
+        return (recordedTemp >= feverLimit);
+    }
 
     public boolean isInRange(double inRange) {
-        if(inRange >= 0 && inRange <= 120){
-            return true;
-        } else {
-            return false;
-        }
+        return inRange >= minTemp && inRange <= maxTemp;
     }
 
     public TemperatureReader(){

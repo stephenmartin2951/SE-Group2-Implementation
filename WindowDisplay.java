@@ -1,7 +1,7 @@
 public class WindowDisplay {
 
-    private double temperatureDisplay = 65.00;
-    private boolean idle = true;
+    public double temperatureDisplay = 65.00;
+    public boolean idle = true;
 
     public double getTemperatureDisplay() {
         return temperatureDisplay;
