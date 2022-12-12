@@ -7,40 +7,36 @@ public class ThermometerTest {
     @Test
     public void Thermometer() {
         Thermometer thermometer = new Thermometer();
-        assert(!thermometer.powerOn);
-        assert(!thermometer.inactivity);
-        assert(thermometer.batteryLevel == 100);
-        assert(!thermometer.powerButton);
-        assert(!thermometer.batteryButton);
-
+        assert(!thermometer.isPowerOn());
+        assert(thermometer.getBatteryLevel() == 100);
     }
 
     @Test
     public void isPowerButton() {
         Thermometer thermometer = new Thermometer();
-        assert(!thermometer.powerButton);
+        assert(!thermometer.isPowerButton());
     }
 
     @Test
     public void pressPowerButton() {
         Thermometer thermometer = new Thermometer();
-        assert(!thermometer.powerButton);
+        assert(!thermometer.isPowerOn());
         thermometer.pressPowerButton(true);
-        assert(thermometer.powerButton);
+        assert(thermometer.isPowerOn());
     }
 
     @Test
     public void isBatteryButton() {
         Thermometer thermometer = new Thermometer();
-        assert(!thermometer.batteryButton);
+        assert(!thermometer.isBatteryButton());
     }
 
     @Test
     public void pressBatteryButton() {
         Thermometer thermometer = new Thermometer();
-        assert(!thermometer.batteryButton);
+        assert(!thermometer.isBatteryButton());
         thermometer.pressBatteryButton(true);
-        assert(thermometer.batteryButton);
+        assert(thermometer.isBatteryButton());
     }
 
     @Test
@@ -57,27 +53,14 @@ public class ThermometerTest {
         assert(thermometer.isPowerOn());
     }
 
-    @Test
-    public void isInactivity() {
-        Thermometer thermometer = new Thermometer();
-        assert(!thermometer.isInactivity());
-    }
-
-    @Test
-    public void setInactivity() {
-        Thermometer thermometer = new Thermometer();
-        assert(!thermometer.isInactivity());
-        thermometer.setInactivity(true);
-        assert(thermometer.isInactivity());
-    }
 
     @Test
     public void setBatteryLevel() {
         Thermometer thermometer = new Thermometer();
         thermometer.setBatteryLevel(90);
-        assert(thermometer.batteryLevel == 90);
+        assert(thermometer.getBatteryLevel() == 90);
         thermometer.setBatteryLevel(80);
-        assert(thermometer.batteryLevel == 80);
+        assert(thermometer.getBatteryLevel() == 80);
     }
 
     @Test

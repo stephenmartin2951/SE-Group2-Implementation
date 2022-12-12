@@ -19,21 +19,22 @@ public class WindowDisplay {
         this.idle = idle;
     }
 
-    public int convertCelsiusOrFahrenheit(int temperature, boolean convertToCelsius){
+    public double convertCelsiusOrFahrenheit(double temperature, boolean convertToCelsius){ //Requirement (5.2)
         if(convertToCelsius){
             //Convert to Celsius
-            temperature = temperature * (9/5) + 32;
+            temperature = (temperature - 32.0) * (5.0/9.0);
         } else {
             //Convert to Fahrenheit
-            temperature = (temperature - 32) * (5/9);
+            temperature = temperature * (9.0/5.0) + 32.0;
         }
+
         return temperature;
     }
 
     public void displayBatteryLife(Thermometer thermometer){
-        System.out.println(thermometer.getBatteryLevel());
+        System.out.println("Battery Level: " + thermometer.getBatteryLevel() + "%");
     }
 
     public void displayTemperature(WindowDisplay temperature){System.out.println("Thermometer is displaying" +
-            " temperature of: " + temperature.getTemperatureDisplay());}
+            " temperature of: " + (int)temperature.getTemperatureDisplay());}
 }
